@@ -1,0 +1,15 @@
+name: Test Preivew
+
+on: 
+  repository_dispatch:
+    types:
+      - resource-previewed
+    branches:
+      - test-preview
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "Status: ${{ github.event.client_payload.status }}"
+        echo "Path: ${{ github.event.client_payload.path }}"
